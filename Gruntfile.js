@@ -1,21 +1,25 @@
 module.exports = function(grunt) {
   // Configuração das tarefas
     grunt.initConfig({
-    pkg: grunt.file.readJSON('package.json')
+    pkg: grunt.file.readJSON('package.json'),
+  
+    // Aqui entram as configurações dos plugins
+    // ESSAS TAREFA VAI APAGAR O COMTEUDO DENTRO DA PASTA DIST
+    clean: {
+      build: ['dist/*']
+    }
   });
 
   // Aqui ficam as tarefas
-    grunt.registerTask('mensagem', 'Exibe uma mensagem', function() {
-    grunt.log.writeln('Olá Jason, você está aprendendo Grunt!');
-    });
-
-  // Fim da área de tarefas
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    // Carrega o plugin de limpeza
+    grunt.registerTask('default', ['clean']);
+      // Fim da área de tarefas
 
     //Para executar esse código
     // abra o terminal no diretório do projeto
     // e digite no terminal:
     // o comando abaixo
-    //   grunt mensagem
-
-};
+    //   grunt
+    };
 
