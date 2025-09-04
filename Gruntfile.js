@@ -5,7 +5,8 @@ module.exports = function(grunt) {
   
     // Aqui entram as configurações dos plugins
       jshint: {
-      all: ['src/scripts/*.js'] 
+      all: ['src/scripts/*.js'] // Ele irá verificar todos os arquivos .js dentro da pasta scripts
+                                // e irá verificar se há erros de sintaxe
       }
     });
 
