@@ -4,22 +4,15 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
   
     // Aqui entram as configurações dos plugins
-    // ESSAS TAREFA VAI APAGAR O COMTEUDO DENTRO DA PASTA DIST
-    clean: {
-      build: ['dist/*']
-    }
-  });
+      jshint: {
+      all: ['src/scripts/*.js'] 
+      }
+    });
 
   // Aqui ficam as tarefas
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    // Carrega o plugin de limpeza
-    grunt.registerTask('default', ['clean']);
-      // Fim da área de tarefas
+  grunt.loadNpmTasks('grunt-contrib-jshint');
 
-    //Para executar esse código
-    // abra o terminal no diretório do projeto
-    // e digite no terminal:
-    // o comando abaixo
-    //   grunt
-    };
+  grunt.registerTask('default', ['jshint']);
+
+  };
 
