@@ -2,6 +2,15 @@ const fs = require('fs');
 
 module.exports = function(grunt) {
   grunt.initConfig({
+
+    uglify: {
+      meuScript: {
+        files: {
+          'dist/script.min.js': ['js/script.js']
+        }
+      }
+    },
+
     concat: {
       dist: {
         src: ['js/arquivo01.js', 'js/arquivo02.js', 'js/arquivo03.js'],
@@ -10,7 +19,9 @@ module.exports = function(grunt) {
     },
 
   });
+
   grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
 
     // Tarefa personalizada para mostrar o conteúdo no console
   grunt.registerTask('mostrar', 'Mostra o conteúdo do arquivo final', function() {
@@ -21,5 +32,5 @@ module.exports = function(grunt) {
 
 
   // Tarefa padrão: concat + mostrar
-  grunt.registerTask('default', ['concat', 'mostrar']);
+  grunt.registerTask('default', ['concat', 'mostrar','uglify']);
 };
