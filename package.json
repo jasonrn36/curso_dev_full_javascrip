@@ -12,6 +12,8 @@
   "devDependencies": {
     "grunt": "^1.6.1",
     "grunt-contrib-concat": "^2.1.0",
-    "grunt-contrib-uglify": "^5.2.2"
+    "grunt-contrib-uglify": "^5.2.2",
+    "grunt-html": "^17.1.0",
+    "grunt-htmlhint": "^0.9.13"
   }
 }

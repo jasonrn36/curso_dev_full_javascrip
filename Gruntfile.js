@@ -2,35 +2,19 @@ const fs = require('fs');
 
 module.exports = function(grunt) {
   grunt.initConfig({
-
-    uglify: {
-      meuScript: {
-        files: {
-          'dist/script.min.js': ['js/script.js']
-        }
-      }
-    },
-
-    concat: {
-      dist: {
-        src: ['js/arquivo01.js', 'js/arquivo02.js', 'js/arquivo03.js'],
-        dest: 'dist/todos.js',
+    htmlhint: {
+      options: {
+        'tagname-lowercase': true,
+        'attr-value-double-quotes': true,
+        'doctype-first': true,
+        'alt-require': true,
+        'id-unique': true,
+        'head-script-disabled': true
       },
-    },
-
+      src: ['src/index.html']
+    }
   });
 
-  grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-
-    // Tarefa personalizada para mostrar o conteúdo no console
-  grunt.registerTask('mostrar', 'Mostra o conteúdo do arquivo final', function() {
-    const conteudo = fs.readFileSync('dist/todos.js', 'utf8');
-    console.log('\n📦 Arquivo final:\n');
-    console.log(conteudo);
-  });
-
-
-  // Tarefa padrão: concat + mostrar
-  grunt.registerTask('default', ['concat', 'mostrar','uglify']);
+grunt.loadNpmTasks('grunt-html');
+grunt.registerTask('default', ['htmlhint']);
 };
